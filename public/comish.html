@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css" rel="stylesheet" integrity="sha384-2mX2PSpkRSXLQzmNzH3gwK6srb06+OfbDlYjbog8LQuALYJjuQ3+Yzy2JIWNV9rW" crossorigin="anonymous">
+
+  
+
+  <title>CompCalc</title>
+
+
+    <script>
+     function storePlan(q,r) {
+      if (q<=0) {
+        alert("quota must be great than 0")
+        return
+      }
+      if (r<=0 || r>100){
+        alert("rate must be greater than 0 and less than 100")
+        return
+      }
+      localStorage.quota = q;
+      localStorage.rate=r/100;
+      win=document.getElementById("bottom")
+      win.innerHTML="<BR>"+"Quota: $"+localStorage.quota+"<BR>"+"Rate: "+localStorage.rate*100+"%"+"<BR>"+"Commission: $"+localStorage.rate*localStorage.quota;
+    }
+
+    localStorage.quota=0;
+    localStorage.rate=0;
+
+  </script>
+
+
+</head>
+
+
+<body>
+
+
+  <div class="myNumber" id="top">
+    <p>Set Compensation Plan</p>
+    <br>
+
+    Quota: $
+    <input class= "myNumber" type="number" id="quota"/>
+
+    <BR>
+      Rate:
+      <input type="number" id="rate" min="0" max="100"> %
+
+      <script> document.getElementById("quota").value=localStorage.quota</script>
+      <script> document.getElementById("rate").value=localStorage.rate</script>
+
+
+      <br>
+      <BR>
+        <button type="button" onclick="storePlan(document.getElementById('quota').value, document.getElementById('rate').value)" >Update</button>
+      </div>
+      <div id="bottom">
+      </div>  
+
+    </body>
+    </html>
